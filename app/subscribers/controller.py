@@ -1,5 +1,6 @@
 from flask import Blueprint, Response, request, jsonify
 
+
 MIMETYPE = 'application/json'
 subscribers_controller = Blueprint('subscribers', __name__, url_prefix='/subscribers')
 
