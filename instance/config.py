@@ -6,9 +6,13 @@ class Config(object):
     Arguments:
         object {object} -- default python object type
     """
+    APPLICATION_ROOT = '/api/v1'
     DEBUG = False
-    SECRET = os.getenv('SECRET')
-    MONGO_DATABASE_URI = os.getenv('DATABASE_URL')
+    MONGO_URI = 'mongodb://{user}:{password}@{host}:{port}'.format(
+        user = os.getenv('MONGO_DATABASE_USER'), 
+        password = os.getenv('MONGO_DATABASE_PASSWORD'),
+        host = os.getenv('MONGO_DATABASE_HOST'), 
+        port = os.getenv('MONGO_DATABASE_PORT'))
 
 
 class DevelopmentConfig(Config):
@@ -29,7 +33,7 @@ class TestingConfig(Config):
         which class inherits.
     """
     TESTING = True
-    MONGO_DATABASE_URI = 'postgresql://localhost/test_db'
+    MONGO_URI = ''
     DEBUG = True
 
 

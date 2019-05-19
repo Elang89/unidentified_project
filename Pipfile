@@ -6,12 +6,12 @@ name = "pypi"
 [packages]
 flask-restplus = "*"
 flask = "*"
-pylint = "*"
-"autopep8" = "*"
-pymongo = "*"
-python-dotenv = "*"
+flask-pymongo = "*"
 
 [dev-packages]
+pylint = "*"
+"autopep8" = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
