@@ -1,16 +1,15 @@
-import os
-
+from os import getenv
 
 class Config(object):
     """Config object for app configuration
     Arguments:
         object {object} -- default python object type
     """
-    MONGO_URI = 'mongodb://{user}:{password}@{host}:{port}'.format(
-        user=os.getenv('MONGO_DATABASE_USER'),
-        password=os.getenv('MONGO_DATABASE_PASSWORD'),
-        host=os.getenv('MONGO_DATABASE_HOST'),
-        port=os.getenv('MONGO_DATABASE_PORT'))
+    MONGO_URI = 'mongodb://{user}:{password}@{host}:{port}/?authSource=admin'.format(
+        user=getenv('MONGO_DATABASE_USER'),
+        password=getenv('MONGO_DATABASE_PASSWORD'),
+        host=getenv('MONGO_DATABASE_HOST'),
+        port=getenv('MONGO_DATABASE_PORT'))
     DEBUG = False
 
 
