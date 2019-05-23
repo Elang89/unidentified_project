@@ -1,14 +1,16 @@
-import os
-
+from os import getenv
 
 class Config(object):
     """Config object for app configuration
     Arguments:
         object {object} -- default python object type
     """
+    MONGO_URI = 'mongodb://{user}:{password}@{host}:{port}/?authSource=admin'.format(
+        user=getenv('MONGO_DATABASE_USER'),
+        password=getenv('MONGO_DATABASE_PASSWORD'),
+        host=getenv('MONGO_DATABASE_HOST'),
+        port=getenv('MONGO_DATABASE_PORT'))
     DEBUG = False
-    SECRET = os.getenv('SECRET')
-    MONGO_DATABASE_URI = os.getenv('DATABASE_URL')
 
 
 class DevelopmentConfig(Config):
@@ -29,7 +31,6 @@ class TestingConfig(Config):
         which class inherits.
     """
     TESTING = True
-    MONGO_DATABASE_URI = 'postgresql://localhost/test_db'
     DEBUG = True
 
 
