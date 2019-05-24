@@ -1,21 +1,22 @@
+
 from os import getenv
+
 
 class Config(object):
     """Config object for app configuration
     Arguments:
         object {object} -- default python object type
     """
-    MONGO_URI = 'mongodb://{user}:{password}@{host}:{port}/?authSource=admin'.format(
-        user=getenv('MONGO_DATABASE_USER'),
-        password=getenv('MONGO_DATABASE_PASSWORD'),
-        host=getenv('MONGO_DATABASE_HOST'),
-        port=getenv('MONGO_DATABASE_PORT'))
     DEBUG = False
+    MONGO_HOSTNAME = getenv('MONGO_HOSTNAME')
+    MONGO_USER = getenv('MONGO_USER')
+    MONGO_PASSWORD = getenv('MONGO_PASSWORD')
+    MONGO_PORT = getenv('MONGO_PORT')
+    MONGO_DATABASE = getenv('MONGO_DATABASE')
 
 
 class DevelopmentConfig(Config):
     """Development config settings
-    
     Arguments:
         Config {Config} -- default config object from 
         which class inherits.
@@ -25,7 +26,6 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
     """Testing config settings
-    
     Arguments:
         Config {Config} -- default config object from
         which class inherits.
@@ -36,7 +36,6 @@ class TestingConfig(Config):
 
 class StagingConfig(Config):
     """Staging config settings
-    
     Arguments:
         Config {Config} -- default config object from
         which class inherits.
@@ -46,7 +45,6 @@ class StagingConfig(Config):
 
 class ProductionConfig(Config):
     """Production config settings
-    
     Arguments:
         Config {Config} -- default config object from 
         which class inherits.

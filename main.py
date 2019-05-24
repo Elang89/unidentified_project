@@ -4,7 +4,7 @@ from flask_injector import FlaskInjector
 from flask import Flask, jsonify
 from os import getenv
 
-from app.providers import MongoClientModule
+from app.providers import MongoDatabaseModule
 from app.subscribers.controller import subscribers_controller
 from instance.config import app_config
 
@@ -25,7 +25,7 @@ def create_app(config_name):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(app_config[config_name])
     app.config.from_pyfile('config.py')
-    default_injector_modules = dict(mongo_client = MongoClientModule())
+    default_injector_modules = dict(mongo_client = MongoDatabaseModule())
     
     app.register_blueprint(subscribers_controller)
     
