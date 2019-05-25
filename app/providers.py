@@ -1,6 +1,7 @@
 from injector import inject, Module
 from flask import Config
 from flask_injector import request
+from mongoengine import connect
 from pymongo import MongoClient
 from pymongo.database import Database
 
@@ -31,7 +32,7 @@ class MongoDatabaseModule(Module):
         Arguments:
             config {Config} -- [description]
         """
-        client = MongoClient(
+        client = connect(
             host=config['MONGO_HOSTNAME'],
             username=config['MONGO_USER'],
             password=config['MONGO_PASSWORD'],

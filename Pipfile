@@ -7,8 +7,8 @@ name = "pypi"
 flask-restplus = "*"
 flask = "*"
 flask-injector = "*"
-pymongo = "*"
 mongoengine = "*"
+pymongo = "*"
 
 [dev-packages]
 pylint = "*"
