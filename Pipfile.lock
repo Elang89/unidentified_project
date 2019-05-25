@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "dd9074d856c441b64883df87e83098a22c588c93072267e0f7bb8f77fcfe6bfc"
+            "sha256": "927940164edf201bcf6cfd1210535fef1d29bbee7adab63750b14f3531d1189c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -63,10 +63,10 @@
         },
         "injector": {
             "hashes": [
-                "sha256:84e2799d1c08510d2e9f157a297dfc783e8167ea31df88ee195d465e1e66ff71",
-                "sha256:fd0e8eb75a1db8c55e21c1306ae224c3ff2fa7336111ab8eae13deb7627e3c78"
+                "sha256:555d119a8c74cf55fa973a480fc816c289dcf47dcef044bec61c5b06a0e1aeaa",
+                "sha256:c8181ed44b628956b5b2d92a2a83d0b302d0b185bc63c481fadfedaf91f745a4"
             ],
-            "version": "==0.16.1"
+            "version": "==0.16.2"
         },
         "itsdangerous": {
             "hashes": [
@@ -121,6 +121,14 @@
                 "sha256:e249096428b3ae81b08327a63a485ad0878de3fb939049038579ac0ef61e17e7"
             ],
             "version": "==1.1.1"
+        },
+        "mongoengine": {
+            "hashes": [
+                "sha256:8c2494dac7d727e67cd3c75ba086c02744bcdc9fe4d47b9aeff1fbe8c7c48724",
+                "sha256:cab88831a0ee587765f87a5cb83f5d3a478ea47cc90cfaff8b8c620f52ab5d09"
+            ],
+            "index": "pypi",
+            "version": "==0.17.0"
         },
         "pymongo": {
             "hashes": [
