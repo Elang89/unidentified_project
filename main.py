@@ -26,7 +26,7 @@ def create_app(config_name):
     app.config.from_object(app_config[config_name])
     app.config.from_pyfile('config.py')
     default_injector_modules = dict(mongo_client = MongoDatabaseModule())
-    
+        
     app.register_blueprint(subscribers_controller)
     
     FlaskInjector(app = app, modules = default_injector_modules.values())
