@@ -1,20 +1,19 @@
-
 version: "3.3"
-services: 
-  mongo:
-    image: mongo:latest
-    container_name: plpdb_container
+
+services:
+  db:
+    image: postgres
     restart: always
-    environment: 
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-      MONGO_INITDB_DATABASE: plpdb
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DATABASE: plp_structure_db
     ports:
-      - 27017:27017
+      - 5432:5432
+    volumes:
+      - /var/lib/postgresql/data
+      - ./scripts/db/:/docker-entrypoint-initdb.d/
     labels:
-      name: "MongoDB Server"
-    volumes: 
-      - mongo_db:/var/lib/mongodb/data
-      - ./scripts:/docker-entrypoint-initdb.d/
-volumes: 
-  mongo_db:
+      name: "Postgres SQL Database"
+volume:
+  plpdb_volume:
