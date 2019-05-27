@@ -8,15 +8,14 @@ flask-restplus = "*"
 flask = "*"
 flask-injector = "*"
 flask-sqlalchemy = "*"
-autopep8 = "*"
-psycopg2 = "*"
+uuid = "*"
 
 [dev-packages]
 pylint = "*"
 python-dotenv = "*"
 pytest = "*"
+autopep8 = "*"
 flask-migrate = "*"
-flask-script = "*"
 
 [requires]
 python_version = "3.7"

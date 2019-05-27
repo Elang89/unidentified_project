@@ -17,8 +17,4 @@ def add_subscriber():
         Response - an HttpResponse with a success or failure 
         code depending on the result of the add operation.
     """
-
-    data = {'name': 'Wilson', 'age': 'something'}
-    db = mongo_client.plpdb
-    db.subscribers.insert(data)
-    return jsonify(status="Ok", statusCode=200)
+    raise NotImplementedError
