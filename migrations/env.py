@@ -8,6 +8,8 @@ from sqlalchemy import pool
 
 from alembic import context
 
+
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -22,10 +24,11 @@ logger = logging.getLogger('alembic.env')
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 from flask import current_app
+from app.subscribers.model import Subscriber
 config.set_main_option(
     'sqlalchemy.url', current_app.config.get(
         'SQLALCHEMY_DATABASE_URI').replace('%', '%%'))
-target_metadata = current_app.extensions['migrate'].db.metadata
+target_metadata = [Subscriber.metadata]
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
