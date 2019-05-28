@@ -7,6 +7,7 @@ from flask import Flask, jsonify
 from os import getenv
 
 from app.subscribers.controller import subscribers_controller
+from app.subscribers.model import Subscriber
 from instance.config import app_config
 
 

@@ -3,17 +3,17 @@ version: "3.3"
 services:
   db:
     image: postgres
+    container_name: plpdb_container
     restart: always
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
-      POSTGRES_DATABASE: plp_structure_db
+      POSTGRES_DB: structure_db
     ports:
       - 5432:5432
     volumes:
       - /var/lib/postgresql/data
-      - ./scripts/db/:/docker-entrypoint-initdb.d/
     labels:
       name: "Postgres SQL Database"
-volume:
+volumes:
   plpdb_volume:
