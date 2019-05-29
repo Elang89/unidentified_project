@@ -25,4 +25,4 @@ jobs:
       - run: 
           name: Run Tests
           command: |
-            python3 -m pipenv run pytest
+            pipenv run python -m pytest
