@@ -21,11 +21,11 @@ jobs:
       - run: 
           name: Upgrade Pipenv
           command: |
-            pip install --upgrade pip
+            python3 -m pip install --upgrade pip
       - run: 
           name: Install Pipenv
           command: |
-            python3 -m pip install pipenv==11.4.0 --user
+            python3 -m pip install --user pipenv==11.4.0
       - run:
           name: Install Pipenv dependencies
           command: |
