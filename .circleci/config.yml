@@ -18,10 +18,18 @@ jobs:
         POSTGRES_DB: structure_db
     steps:
       - checkout
+      - run: 
+          name: Upgrade Pipenv
+          command: |
+            pip install --upgrade pip
+      - run: 
+          name: Install Pipenv
+          command: |
+            python3 -m pip install pipenv==11.4.0 --user
       - run:
           name: Install Pipenv dependencies
           command: |
-            python3 -m pip install pipenv==11.4.0 && python3 -m pipenv install --dev
+            python3 -m pipenv install --dev
       - run: 
           name: Run Tests
           command: |
