@@ -8,7 +8,6 @@ subscribers_controller = Blueprint(
 
 
 @subscribers_controller.route('/add', methods=['POST'])
-@inject
 def add_subscriber():
     """create_subscriber receives a json with data
     to add a new subscriber.
@@ -18,3 +17,8 @@ def add_subscriber():
         code depending on the result of the add operation.
     """
     raise NotImplementedError
+
+
+@subscribers_controller.route('/', methods=['GET'])
+def get_subscribers():
+    return jsonify(status_code=200, status='Ok', test='works')
