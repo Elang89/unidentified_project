@@ -22,7 +22,7 @@ jobs:
           name: Install Pipenv dependencies
           command: |
             sudo pip install pipenv
-            python3 -m pipenv install
+            python3 -m pipenv install --dev
       - run: 
           name: Run Tests
           command: |
