@@ -21,10 +21,10 @@ jobs:
       - run:
           name: Install Pipenv dependencies
           command: |
-          sudo pip install pipenv
-          python3 -m pipenv install\
+            sudo pip install pipenv
+            python3 -m pipenv install
       - run: 
           name: Run Tests
           command: |
-          pipenv shell
-          pytest test/
+            pipenv shell
+            pytest test/
