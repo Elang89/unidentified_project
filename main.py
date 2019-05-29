@@ -1,44 +1,27 @@
 from dotenv import load_dotenv
 from flask_restplus import Api
 from flask_injector import FlaskInjector
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, jsonify
 from os import getenv
 
-from app.providers import MongoDatabaseModule
 from app.subscribers.controller import subscribers_controller
+from app.subscribers.model import Subscriber
 from instance.config import app_config
 
 
+load_dotenv(verbose=True)
+config_name = getenv('FLASK_ENV')
+port = getenv('ENV_PORT')
 
-def create_app(config_name):
-    """create_app sets up the application and 
-    its configuration.
-    
-    Arguments:
-        config_name {str} -- type of config to be used 
-        for example 'development'
-    
-    Returns:
-        Flask -- default flask app object. 
-    """
-    api = Api()
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_object(app_config[config_name])
-    app.config.from_pyfile('config.py')
-    default_injector_modules = dict(mongo_client = MongoDatabaseModule())
-        
-    app.register_blueprint(subscribers_controller)
-    
-    FlaskInjector(app = app, modules = default_injector_modules.values())
+app = Flask(__name__, instance_relative_config=True)
+app.config.from_object(app_config[config_name])
+app.config.from_pyfile("config.py")
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    api.init_app(app)
-    return app
+app.register_blueprint(subscribers_controller)
 
-
-if __name__ == '__main__':
-    load_dotenv(verbose=True)
-    config_name = getenv('APP_SETTINGS')
-    port = getenv('ENV_PORT')
-    app = create_app(config_name)
-    app.run(port=port)
-
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+api = Api(app)

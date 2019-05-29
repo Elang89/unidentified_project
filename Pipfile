@@ -7,13 +7,16 @@ name = "pypi"
 flask-restplus = "*"
 flask = "*"
 flask-injector = "*"
-mongoengine = "*"
-pymongo = "*"
+flask-sqlalchemy = "*"
+uuid = "*"
 
 [dev-packages]
 pylint = "*"
-"autopep8" = "*"
 python-dotenv = "*"
+pytest = "*"
+autopep8 = "*"
+flask-migrate = "*"
+"psycopg2" = "*"
 
 [requires]
 python_version = "3.7"
