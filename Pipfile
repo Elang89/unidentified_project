@@ -1,23 +1,11 @@
 [[source]]
+name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
-name = "pypi"
-
-[packages]
-flask-restplus = "*"
-flask = "*"
-flask-injector = "*"
-flask-sqlalchemy = "*"
-uuid = "*"
 
 [dev-packages]
-pylint = "*"
-python-dotenv = "*"
-pytest = "*"
-autopep8 = "*"
-flask-migrate = "*"
-"psycopg2" = "*"
-pytest-cov = "*"
+
+[packages]
 
 [requires]
 python_version = "3.7"
