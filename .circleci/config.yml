@@ -16,13 +16,18 @@ jobs:
         POSTGRES_USER: ubuntu
         POSTGRES_PASSWORD: password
         POSTGRES_DB: structure_db
+    working_directory: ~/flask_plp_app
     steps:
       - checkout
-      - run:
-          name: Install Pipenv dependencies
+      - run: 
+          name: Install Poetry
           command: |
-            python3 -m pipenv install --dev
+            python3 -m pip install poetry 
+      - run:
+          name: Install dependencies
+          command: |
+            python3 -m poetry install
       - run: 
           name: Run Tests
           command: |
-            python3 -m pipenv run pytest
+            python3 -m poetry run pytest

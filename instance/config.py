@@ -26,6 +26,7 @@ class Config(object):
 
     SQLALCHEMY_DATABASE_URI = _create_connection_string(
         user=PG_USER, password=PG_PASSWORD, host=PG_HOSTNAME, port=PG_PORT, db=PG_DATABASE)
+    
 
 
 class DevelopmentConfig(Config):
