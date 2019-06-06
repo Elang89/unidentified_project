@@ -23,8 +23,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    # ports:
-    #   - 5000:5000
     expose: 
       - 5000
     depends_on: 
@@ -33,7 +31,6 @@ services:
       ENV_PORT: 5000
 
       FLASK_ENV: staging
-      FLASK_APP: main.py
 
       PG_HOSTNAME: localhost
       PG_PORT: 5432
@@ -42,7 +39,7 @@ services:
       PG_DATABASE: structure_db
     volumes: 
       - ./:/flask_app
-    command: python -m poetry run python main.py
+    command: python main.py
     labels:
       name: "Flask PLP App" 
 
