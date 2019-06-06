@@ -4,5 +4,6 @@ flask
 flask-injector
 flask-sqlalchemy
 flask-migrate
+gunicorn
 psycopg2-binary
 python-dotenv
