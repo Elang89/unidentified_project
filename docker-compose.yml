@@ -40,7 +40,7 @@ services:
       PG_DATABASE: structure_db
     volumes: 
       - ./:/flask_app
-    command: python -m poetry run python main.py
+    command: python main.py
     labels:
       name: "Flask PLP App" 
 

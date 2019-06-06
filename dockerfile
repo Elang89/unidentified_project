@@ -8,7 +8,7 @@ COPY requirements-dev.txt requirements-dev.txt
 COPY requirements.txt requirements.txt
 
 RUN python -m venv env
-RUN source ./env/activate
+RUN . env/bin/activate
 
 RUN pip install -r requirements.txt
 RUN pip install -r requirements-dev.txt
