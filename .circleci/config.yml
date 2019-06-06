@@ -20,14 +20,16 @@ jobs:
     steps:
       - checkout
       - run: 
-          name: Install Poetry
+          name: Create env
           command: |
-            python3 -m pip install poetry 
-      - run:
-          name: Install dependencies
+            python3 -m venv env && source ./env/activate
+      - run: 
+          name: Install Dependencies
           command: |
-            python3 -m poetry install
+            python3 -m pip -r install requirements.txt && 
+            python3 -m pip -r install requirements-dev.txt
       - run: 
           name: Run Tests
           command: |
-            python3 -m poetry run pytest
+            python3 -m pytest test/
+
