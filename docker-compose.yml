@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   db:
-    container_name: plp_database
+    container_name: up_database
     restart: always
     image: postgres
     environment:
@@ -18,7 +18,7 @@ services:
       name: "Postgres SQL Database"
 
   web:
-    container_name: plp_flask_app
+    container_name: up_flask_app
     restart: always
     build:
       context: ./
@@ -41,10 +41,10 @@ services:
       - ./:/flask_app
     command:  gunicorn --bind 0.0.0.0:5000  main
     labels:
-      name: "Flask PLP App" 
+      name: "Flask UP App" 
 
   nginx:
-    container_name: plp_nginx_server 
+    container_name: up_nginx_server 
     restart: always
     build:
       context: ./nginx
@@ -58,4 +58,4 @@ services:
       name: "Nginx Reverse Proxy"
 
 volumes:
-  plpdb_volume:
+  updb_volume:
