@@ -39,7 +39,7 @@ services:
       PG_DATABASE: structure_db
     volumes: 
       - ./:/flask_app
-    command: python main.py
+    command:  gunicorn --bind 0.0.0.0:5000  main
     labels:
       name: "Flask PLP App" 
 
