@@ -16,7 +16,7 @@ jobs:
         POSTGRES_USER: ubuntu
         POSTGRES_PASSWORD: password
         POSTGRES_DB: structure_db
-    working_directory: ~/flask_plp_app
+    working_directory: ~/flask_up_app
     steps:
       - checkout
       - run: 
