@@ -1,0 +1,8 @@
+# requirements in
+
+flask
+flask-injector
+flask-sqlalchemy
+flask-migrate
+psycopg2-binary
+python-dotenv
