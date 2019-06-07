@@ -12,7 +12,6 @@ class Subscriber(Base):
     __tablename__ = 'subscribers'
 
     id = Column('id', UUID(as_uuid=True), primary_key=True,
-                   default=lambda: uuid4())
-    form_data = Column(JSON)
+                default=lambda: uuid4())
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
