@@ -1,17 +1,48 @@
+version: "3.7"
 
-version: "3.3"
-services: 
-  mongo:
-    image: mongo:latest
-    container_name: plpdb_container
-    environment: 
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+services:
+  db:
+    container_name: up_database
+    restart: always
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: structure_db
     ports:
-      - 27017:27017
+      - 5432:5432
+    volumes:
+      - /var/lib/postgresql/data
     labels:
-      name: "MongoDB Server"
-    volumes: 
-      - mongo_db:/var/lib/mongodb/data
-volumes: 
-  mongo_db:
+      name: "Postgres SQL Database"
+
+  web:
+    container_name: up_flask_app
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    expose: 
+      - 5000
+    depends_on: 
+      - db
+    command: python main.py
+    labels:
+      name: "Flask UP App" 
+
+  nginx:
+    container_name: up_nginx_server 
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports: 
+      - 80:80
+      - 443:443
+    depends_on: 
+      - web
+    labels: 
+      name: "Nginx Reverse Proxy"
+
+volumes:
+  updb_volume:
