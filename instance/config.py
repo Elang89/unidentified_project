@@ -2,12 +2,8 @@ from os import getenv
 
 
 def _create_connection_string(user, password, host, port, db):
-    return 'postgresql://{user}:{password}@{host}:{port}/{db}'.format(
-        user=user,
-        password=password,
-        host=host,
-        port=port,
-        db=db
+    return "postgresql://{user}:{password}@{host}:{port}/{db}".format(
+        user=user, password=password, host=host, port=port, db=db
     )
 
 
@@ -18,15 +14,19 @@ class Config(object):
     """
 
     DEBUG = True
-    PG_HOSTNAME = getenv('PG_HOSTNAME')
-    PG_USER = getenv('PG_USER')
-    PG_PASSWORD = getenv('PG_PASSWORD')
-    PG_PORT = getenv('PG_PORT')
-    PG_DATABASE = getenv('PG_DATABASE')
+    PG_HOSTNAME = getenv("PG_HOSTNAME")
+    PG_USER = getenv("PG_USER")
+    PG_PASSWORD = getenv("PG_PASSWORD")
+    PG_PORT = getenv("PG_PORT")
+    PG_DATABASE = getenv("PG_DATABASE")
 
     SQLALCHEMY_DATABASE_URI = _create_connection_string(
-        user=PG_USER, password=PG_PASSWORD, host=PG_HOSTNAME, port=PG_PORT, db=PG_DATABASE)
-    
+        user=PG_USER,
+        password=PG_PASSWORD,
+        host=PG_HOSTNAME,
+        port=PG_PORT,
+        db=PG_DATABASE,
+    )
 
 
 class DevelopmentConfig(Config):
@@ -35,6 +35,7 @@ class DevelopmentConfig(Config):
         Config {Config} -- default config object from 
         which class inherits.
     """
+
     DEBUG = True
 
 
@@ -71,8 +72,8 @@ class ProductionConfig(Config):
 
 
 app_config = {
-    'development': DevelopmentConfig,
-    'testing': TestingConfig,
-    'staging': StagingConfig,
-    'production': ProductionConfig,
+    "development": DevelopmentConfig,
+    "testing": TestingConfig,
+    "staging": StagingConfig,
+    "production": ProductionConfig,
 }

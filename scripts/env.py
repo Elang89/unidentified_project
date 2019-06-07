@@ -1,4 +1,3 @@
-
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
@@ -13,22 +12,18 @@ from dotenv import load_dotenv
 
 load_dotenv(verbose=True)
 
-host = getenv('PG_HOSTNAME')
-user = getenv('PG_USER')
-password = getenv('PG_PASSWORD')
-port = int(getenv('PG_PORT'))
-database = getenv('PG_DATABASE')
+host = getenv("PG_HOSTNAME")
+user = getenv("PG_USER")
+password = getenv("PG_PASSWORD")
+port = int(getenv("PG_PORT"))
+database = getenv("PG_DATABASE")
 
-uri = 'postgresql://{user}:{password}@{host}:{port}/{database}'.format(
-    user=user,
-    password=password,
-    host=host,
-    port=port,
-    database=database
+uri = "postgresql://{user}:{password}@{host}:{port}/{database}".format(
+    user=user, password=password, host=host, port=port, database=database
 )
 
 config = context.config
-config.set_main_option('sqlalchemy.url', uri)
+config.set_main_option("sqlalchemy.url", uri)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -59,9 +54,7 @@ def run_migrations_offline():
 
     """
     url = config.get_main_option("sqlalchemy.url")
-    context.configure(
-        url=url, target_metadata=target_metadata, literal_binds=True
-    )
+    context.configure(url=url, target_metadata=target_metadata, literal_binds=True)
 
     with context.begin_transaction():
         context.run_migrations()
@@ -81,9 +74,7 @@ def run_migrations_online():
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()

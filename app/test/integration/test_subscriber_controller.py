@@ -1,4 +1,3 @@
-
 # basic  test
 def test_stupid():
     a = 1

@@ -2,11 +2,11 @@ from injector import inject
 from flask import request, jsonify, Blueprint
 
 
+MIMETYPE = "application/json"
+subscribers_controller = Blueprint("subscribers", __name__, url_prefix="/subscribers")
 
-MIMETYPE = 'application/json'
-subscribers_controller = Blueprint('subscribers', __name__, url_prefix='/subscribers')
 
-@subscribers_controller.route('/add', methods=['POST'])
+@subscribers_controller.route("/add", methods=["POST"])
 def add_subscriber():
     """create_subscriber receives a json with data
     to add a new subscriber.
@@ -18,7 +18,7 @@ def add_subscriber():
     raise NotImplementedError
 
 
-@subscribers_controller.route('/', methods=['GET'])
+@subscribers_controller.route("/", methods=["GET"])
 def get_subscribers():
-    return jsonify(status_code=200, status='Ok', test='works')
+    return jsonify(status_code=200, status="Ok", test="works")
 
